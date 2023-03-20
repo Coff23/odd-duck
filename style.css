@@ -1,0 +1,20 @@
+h1 {
+    color: orange;
+    font-size: 40px;
+    text-align: center;
+}
+
+body {
+    background-color: cyan;
+}
+
+#voting-pics {
+    border: thin solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 400px;
+}
+
+img {
+    height: 100%;
+}
