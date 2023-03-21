@@ -12,25 +12,25 @@ function Choice(name, source) {
     this.source = source;
 }
 
-showedImages.push(new Choice("bag", "/img/bag.jpg"));
-showedImages.push(new Choice("banana", "/img/banana.jpg"));
-showedImages.push(new Choice("bathroom", "/img/bathroom.jpg"));
-showedImages.push(new Choice("boots", "/img/boots.jpg"));
-showedImages.push(new Choice("breakfast", "/img/breakfast.jpg"));
-showedImages.push(new Choice("bubblegum", "/img/bubblegum.jpg"));
-showedImages.push(new Choice("chair", "/img/chair.jpg"));
-showedImages.push(new Choice("cthulhu", "/img/cthulhu.jpg"));
-showedImages.push(new Choice("dog-duck", "/img/dog-duck.jpg"));
-showedImages.push(new Choice("dragon", "/img/dragon.jpg"));
-showedImages.push(new Choice("pen", "/img/pen.jpg"));
-showedImages.push(new Choice("pet-sweep", "/img/pet-sweep.jpg"));
-showedImages.push(new Choice("scissors", "/img/scissors.jpg"));
-showedImages.push(new Choice("shark", "/img/shark.jpg"));
-showedImages.push(new Choice("sweep", "/img/sweep.png"));
-showedImages.push(new Choice("tauntaun", "/img/tauntaun.jpg"));
-showedImages.push(new Choice("unicorn", "/img/unicorn.jpg"));
-showedImages.push(new Choice("water-can", "/img/water-can.jpg"));
-showedImages.push(new Choice("wine-glass", "/img/wine-glass.jpg"));
+showedImages.push(new Choice("bag", "img/bag.jpg"));
+showedImages.push(new Choice("banana", "img/banana.jpg"));
+showedImages.push(new Choice("bathroom", "img/bathroom.jpg"));
+showedImages.push(new Choice("boots", "img/boots.jpg"));
+showedImages.push(new Choice("breakfast", "img/breakfast.jpg"));
+showedImages.push(new Choice("bubblegum", "img/bubblegum.jpg"));
+showedImages.push(new Choice("chair", "img/chair.jpg"));
+showedImages.push(new Choice("cthulhu", "img/cthulhu.jpg"));
+showedImages.push(new Choice("dog-duck", "img/dog-duck.jpg"));
+showedImages.push(new Choice("dragon", "img/dragon.jpg"));
+showedImages.push(new Choice("pen", "img/pen.jpg"));
+showedImages.push(new Choice("pet-sweep", "img/pet-sweep.jpg"));
+showedImages.push(new Choice("scissors", "img/scissors.jpg"));
+showedImages.push(new Choice("shark", "img/shark.jpg"));
+showedImages.push(new Choice("sweep", "img/sweep.png"));
+showedImages.push(new Choice("tauntaun", "img/tauntaun.jpg"));
+showedImages.push(new Choice("unicorn", "img/unicorn.jpg"));
+showedImages.push(new Choice("water-can", "img/water-can.jpg"));
+showedImages.push(new Choice("wine-glass", "img/wine-glass.jpg"));
 
 let imageEl1 = document.querySelector("section img:first-child");
 let imageEl2 = document.querySelector("section img:nth-child(2)");
