@@ -47,27 +47,27 @@ function renderImages() {
     let image1 = showedImages[generateRandomImage()];
     let image2 = showedImages[generateRandomImage()];
     let image3 = showedImages[generateRandomImage()];
-    
-    //makes sure no two images are ever the same
+
+    //makes sure no two images are never the same
     while (image1 === image2 || image1 === image3 || image2 === image3) {
         image1 = showedImages[generateRandomImage()];
         image2 = showedImages[generateRandomImage()];
     }
-    
+
     imageEl1.src = image1.source;
     imageEl1.id = image1.name;
     image1.timesShown += 1;
-    
+
     imageEl2.src = image2.source;
     imageEl2.id = image2.name;
     image2.timesShown += 1;
-    
+
     imageEl3.src = image3.source;
     imageEl3.id = image3.name;
     image3.timesShown += 1;
 }
 
-// when you click an image it adds 1 to timesClicked and takes one off of the 25 rounds. also puts the results on the screen after 25 rounds of voting< got to split these functions up.
+// when you click an image it adds 1 to timesClicked and takes one off of the 25 rounds. also puts the results on the screen after 25 rounds of voting, got to split these functions up.
 let eventId = voteTrackerEl.addEventListener("click", function (event) {
     let imageClicked = event.target.id;
     showedImages.forEach(image => {
@@ -80,17 +80,26 @@ let eventId = voteTrackerEl.addEventListener("click", function (event) {
         roundsOFVoting--;
     } else {
         voteTrackerEl.removeEventListener("click", eventId);
-        let resultsPrinted = document.createElement("ul");
-        let resultsText = "";
-        showedImages.forEach(image=> {
-            resultsText += `${image.name} was clicked ${image.timesClicked} times and shown${image.timesShown} times.`;
-        });
-        resultsPrinted.innerHTML = resultsText;
-        results.appendChild(resultsPrinted);
-        results.classList.add("results-list");
-        console.log(showedImages);
+        let buttonEl = document.getElementById("results-button");
+        buttonEl.addEventListener("click", renderData);
         
     }
 });
+
+function renderData(event) {
+    let buttonClicked = event.target.id;
+    
+    showedImages.forEach(image => {
+        let resultsPrintedEl = document.createElement("li");
+        let parentContainer = document.getElementById("results-list");
+        parentContainer.appendChild(resultsPrintedEl);
+        resultsPrintedEl.innerHTML += `${image.name} was clicked ${image.timesClicked} times and shown ${image.timesShown} times.`;
+    });
+    
+    
+    console.log(showedImages);
+}
+
+
 
 renderImages();
