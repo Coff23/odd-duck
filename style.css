@@ -17,7 +17,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: red;
+    background-color: white;
 }
 
 #voting-pics {
@@ -37,8 +37,25 @@ img {
     width: 400px;
     height: 1100px;
     border: thin solid black;
-
+    border-radius: 10px;
 }
+
+button {
+    margin-left: 50px;
+    position: relative;
+    padding: 16px 30px;
+    font-size: 1.5rem;
+    border: 2px solid black;
+    border-radius: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+button:hover {
+    color: white;
+    background-color: navy;
+  }
 
 ul {
     line-height: 30px;
@@ -47,8 +64,9 @@ ul {
 }
 
 #myChart {
+    margin-left: 100px;
     max-height: 800px;
-    max-width: 900px;
+    max-width: 1200px;
 }
 
 footer {

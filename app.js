@@ -109,13 +109,14 @@ function renderData(event) {
         timesShownValues.push(image.timesShown);
         timesClickedValues.push(image.timesClicked);
     });
+    console.log(labels);
 
     const ctx = document.getElementById('myChart');
 
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: [],
+            labels: labels,
             datasets: [{
                 label: '# of Votes',
                 data: timesClickedValues,
