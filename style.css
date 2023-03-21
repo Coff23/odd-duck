@@ -9,7 +9,14 @@ header {
     height: 100px;
 }
 
+main {
+    margin: auto 0;
+}
+
 body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background-color: cyan;
 }
 
@@ -40,6 +47,8 @@ ul {
 }
 
 footer {
+    margin-top: auto;
+    margin-bottom: auto;
     border: thin solid black;
     height: 100px;
     background-color: grey;
