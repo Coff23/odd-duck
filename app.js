@@ -76,15 +76,16 @@ let eventId = voteTrackerEl.addEventListener("click", function (event) {
         roundsOFVoting--;
     } else {
         voteTrackerEl.removeEventListener("click", eventId);
-        let resultsPrinted = document.createElement("p");
+        let resultsPrinted = document.createElement("ul");
         let resultsText = "";
         showedImages.forEach(image=>{
-            resultsText += `${image.name} was clicked ${image.timesClicked} times and shown${image.timesShown} times. \n`;
+            resultsText += `${image.name} was clicked ${image.timesClicked} times and shown${image.timesShown} times.`;
         });
-        resultsPrinted.textContent = resultsText;
+        resultsPrinted.innerHTML = resultsText;
         results.appendChild(resultsPrinted);
+        results.classList.add("results-list");
         console.log(showedImages);
-
+        
     }
 });
 

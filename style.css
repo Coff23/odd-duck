@@ -18,3 +18,11 @@ body {
 img {
     height: 100%;
 }
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: block;
+}
