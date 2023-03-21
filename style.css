@@ -24,7 +24,7 @@ body {
     border: thin solid black;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 400px;
+    grid-template-rows: 300px;
 }
 
 img {
