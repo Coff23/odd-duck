@@ -54,6 +54,12 @@ function renderImages() {
         image2 = showedImages[generateRandomImage()];
     }
 
+    while (image1 === imageEl1 || image1 === imageEl2 || image1 === imageEl3 || image2 === imageEl1 || image2 === imageEl2 || image2 === imageEl3 || image3 === imageEl1 || image3 === imageEl2 || image3 === imageEl3) {
+        imageEl1 = showedImages[generateRandomImage()];
+        imageEl2 = showedImages[generateRandomImage()];
+        imageEl3 = showedImages[generateRandomImage()];
+    }
+    
     imageEl1.src = image1.source;
     imageEl1.id = image1.name;
     image1.timesShown += 1;
@@ -65,6 +71,7 @@ function renderImages() {
     imageEl3.src = image3.source;
     imageEl3.id = image3.name;
     image3.timesShown += 1;
+
 }
 
 // when you click an image it adds 1 to timesClicked and takes one off of the 25 rounds. also puts the results on the screen after 25 rounds of voting, got to split these functions up.
@@ -82,24 +89,54 @@ let eventId = voteTrackerEl.addEventListener("click", function (event) {
         voteTrackerEl.removeEventListener("click", eventId);
         let buttonEl = document.getElementById("results-button");
         buttonEl.addEventListener("click", renderData);
-        
+
     }
 });
 
+// displays data and chart after 25 images have been clicked and button is clicked.
 function renderData(event) {
     let buttonClicked = event.target.id;
-    
+    let labels = [];
+    let timesShownValues = [];
+    let timesClickedValues = [];
+
     showedImages.forEach(image => {
         let resultsPrintedEl = document.createElement("li");
         let parentContainer = document.getElementById("results-list");
         parentContainer.appendChild(resultsPrintedEl);
         resultsPrintedEl.innerHTML += `${image.name} was clicked ${image.timesClicked} times and shown ${image.timesShown} times.`;
+        labels.push(image.name);
+        timesShownValues.push(image.timesShown);
+        timesClickedValues.push(image.timesClicked);
     });
-    
-    
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [{
+                label: '# of Votes',
+                data: timesClickedValues,
+                borderWidth: 1
+            },{
+                label: "times shown",
+                data: timesShownValues,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
     console.log(showedImages);
 }
-
-
 
 renderImages();

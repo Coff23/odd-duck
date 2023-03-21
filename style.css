@@ -1,5 +1,5 @@
 h1 {
-    color: orange;
+    color: white;
     font-size: 40px;
     text-align: center;
 }
@@ -17,7 +17,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: cyan;
+    background-color: red;
 }
 
 #voting-pics {
@@ -35,19 +35,24 @@ img {
     background-color: pink;
     float: left;
     width: 400px;
-    height: 900px;
+    height: 1100px;
     border: thin solid black;
 
 }
 
 ul {
     line-height: 30px;
-    color: blue;
+    color: black;
 
 }
 
+#myChart {
+    max-height: 800px;
+    max-width: 900px;
+}
+
 footer {
-    color: white;
+    color: red;
     margin-top: auto;
     margin-bottom: auto;
     border: thin solid black;
