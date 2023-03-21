@@ -4,6 +4,7 @@ const showedImages = [];
 let roundsOFVoting = 25;
 let results = document.getElementById("results");
 
+// constructor for images
 function Choice(name, source) {
     this.name = name;
     this.timesClicked = 0;
@@ -41,11 +42,13 @@ function generateRandomImage() {
     return Math.floor(Math.random() * showedImages.length);
 }
 
+// renders 3 images at random
 function renderImages() {
     let image1 = showedImages[generateRandomImage()];
     let image2 = showedImages[generateRandomImage()];
     let image3 = showedImages[generateRandomImage()];
     
+    //makes sure no two images are ever the same
     while (image1 === image2 || image1 === image3 || image2 === image3) {
         image1 = showedImages[generateRandomImage()];
         image2 = showedImages[generateRandomImage()];
@@ -64,6 +67,7 @@ function renderImages() {
     image3.timesShown += 1;
 }
 
+// when you click an image it adds 1 to timesClicked and takes one off of the 25 rounds. also puts the results on the screen after 25 rounds of voting< got to split these functions up.
 let eventId = voteTrackerEl.addEventListener("click", function (event) {
     let imageClicked = event.target.id;
     showedImages.forEach(image => {
@@ -78,7 +82,7 @@ let eventId = voteTrackerEl.addEventListener("click", function (event) {
         voteTrackerEl.removeEventListener("click", eventId);
         let resultsPrinted = document.createElement("ul");
         let resultsText = "";
-        showedImages.forEach(image=>{
+        showedImages.forEach(image=> {
             resultsText += `${image.name} was clicked ${image.timesClicked} times and shown${image.timesShown} times.`;
         });
         resultsPrinted.innerHTML = resultsText;
