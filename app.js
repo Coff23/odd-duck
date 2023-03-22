@@ -32,6 +32,7 @@ showedImages.push(new Choice("unicorn", "img/unicorn.jpg"));
 showedImages.push(new Choice("water-can", "img/water-can.jpg"));
 showedImages.push(new Choice("wine-glass", "img/wine-glass.jpg"));
 
+// Location where the images are displaying on the screen
 let imageEl1 = document.querySelector("section img:first-child");
 let imageEl2 = document.querySelector("section img:nth-child(2)");
 let imageEl3 = document.querySelector("section img:nth-child(3)");
@@ -53,25 +54,35 @@ function renderImages() {
         image1 = showedImages[generateRandomImage()];
         image2 = showedImages[generateRandomImage()];
     }
-
-    while (image1 === imageEl1 || image1 === imageEl2 || image1 === imageEl3 || image2 === imageEl1 || image2 === imageEl2 || image2 === imageEl3 || image3 === imageEl1 || image3 === imageEl2 || image3 === imageEl3) {
-        imageEl1 = showedImages[generateRandomImage()];
-        imageEl2 = showedImages[generateRandomImage()];
-        imageEl3 = showedImages[generateRandomImage()];
-    }
     
     imageEl1.src = image1.source;
     imageEl1.id = image1.name;
     image1.timesShown += 1;
-
+    
     imageEl2.src = image2.source;
     imageEl2.id = image2.name;
     image2.timesShown += 1;
-
+    
     imageEl3.src = image3.source;
     imageEl3.id = image3.name;
     image3.timesShown += 1;
+    
+    // let previousImage = [image1, image2, image3];
+    
+    // while (previousImage === imageEl1 || previousImage === imageEl2 || previousImage === imageEl3) {
+    //     imageEl1 = showedImages[generateRandomImage()];
+    //     imageEl1 = showedImages[generateRandomImage()];
+    //     imageEl1 = showedImages[generateRandomImage()];
 
+    // }
+
+    // while (choice2 === imageEl1 || choice2 === imageEl2 || choice2 === imageEl3) {
+    //     imageEl2 = showedImages[generateRandomImage()];
+    // }
+
+    // while (choice3 === imageEl1 || choice3 === imageEl2 || choice3 === imageEl3) {
+    //     imageEl3 = showedImages[generateRandomImage()];
+    // }
 }
 
 // when you click an image it adds 1 to timesClicked and takes one off of the 25 rounds. also puts the results on the screen after 25 rounds of voting, got to split these functions up.
@@ -82,14 +93,14 @@ let eventId = voteTrackerEl.addEventListener("click", function (event) {
             image.timesClicked += 1;
         }
     });
-    if (roundsOFVoting) {
+    if (roundsOFVoting) { // what happens when you have votes left
         renderImages();
         roundsOFVoting--;
-    } else {
+    } else { // what happens when you run out of votes
         voteTrackerEl.removeEventListener("click", eventId);
         let buttonEl = document.getElementById("results-button");
         buttonEl.addEventListener("click", renderData);
-
+        alert("Max number of votes completed click button to view results.");
     }
 });
 
@@ -109,7 +120,6 @@ function renderData(event) {
         timesShownValues.push(image.timesShown);
         timesClickedValues.push(image.timesClicked);
     });
-    console.log(labels);
 
     const ctx = document.getElementById('myChart');
 
@@ -121,7 +131,7 @@ function renderData(event) {
                 label: '# of Votes',
                 data: timesClickedValues,
                 borderWidth: 1
-            },{
+            }, {
                 label: "times shown",
                 data: timesShownValues,
                 borderWidth: 1
@@ -135,9 +145,21 @@ function renderData(event) {
             }
         }
     });
+}
+renderImages();
 
+localStorage.setItem("Images", JSON.stringify(showedImages));
+console.log(localStorage);
+let choiceState = localStorage.getItem("Images");
+console.log(JSON.parse(choiceState));
 
-    console.log(showedImages);
+function writeData(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
 }
 
-renderImages();
+function readData(key) {
+    return JSON.parse(localStorage.getItem(key));
+}
+
+writeData("choice", showedImages);
+console.log(readData("Images"));
