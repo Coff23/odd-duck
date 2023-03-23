@@ -114,6 +114,7 @@ function renderData(event) {
     let labels = [];
     let timesShownValues = [];
     let timesClickedValues = [];
+    storeData();
 
     showedImages.forEach(image => {
         let resultsPrintedEl = document.createElement("li");
@@ -153,25 +154,20 @@ function renderData(event) {
 
 renderImages();
 
-// localStorage.setItem("Choice", JSON.stringify(showedImages));
-// console.log(localStorage);
-// let choiceState = localStorage.getItem('Choice');
-// console.log(JSON.parse(choiceState));
-
-function writeData(key, value) {
-    localStorage.setItem('Choice', JSON.stringify(showedImages));
-    console.log(localStorage);
+function storeData() {
+    let data = JSON.stringify(showedImages);
+    localStorage.setItem("productData", data);
 }
 
-writeData();
+function readData() {
+    let data = localStorage.getItem("productData");
 
-function readData(key) {
-    return JSON.parse(localStorage.getItem('Choice')) || [];
-    // console.log(JSON.parse('Choice'));
+    if (data) {
+        showedImages = JSON.parse(data);
+        console.log(JSON.parse(data));
+    }else {
+        storeData();
+    }
 }
 
 readData();
-
-
-// writeData();
-// readData();
