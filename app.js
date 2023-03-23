@@ -169,5 +169,4 @@ function readData() {
         storeData();
     }
 }
-
 readData();
